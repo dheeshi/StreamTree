@@ -1,19 +1,33 @@
-*StreamTree – Microservices Movie Streaming Project*
+**StreamTree – Microservices Movie Streaming Project**
+
+
+```mermaid
+graph TD
+    Frontend[Frontend: webapp.html] --> Gateway[API Gateway]
+    Gateway --> Catalog[Movie Catalog Service]
+    Gateway --> Streaming[Movie Streaming Service]
+    Catalog --> Config[Config Server]
+    Streaming --> Config
+    Config --> GitHub[GitHub: microservices-config]
+    Catalog --> Eureka[Service Registry]
+    Streaming --> Eureka
+    Gateway --> Eureka
+
+
+```
+
 
 🚀 Project Overview
 
 StreamTree is a microservices-based movie streaming platform built with Spring Boot.
+
 This project demonstrates:
+-> Config Server: Centralized configuration for all services using GitHub repo.
+-> Service Registry (Eureka): Automatic registration and discovery of microservices.
+-> API Gateway: Single entry point routing requests to microservices.
+-> Movie Services: Catalog and streaming services.
+-> Frontend HTML: Basic web interface to display movies and stream content.
 
-Config Server: Centralized configuration for all services using GitHub repo.
-
-Service Registry (Eureka): Automatic registration and discovery of microservices.
-
-API Gateway: Single entry point routing requests to microservices.
-
-Movie Services: Catalog and streaming services.
-
-Frontend HTML: Basic web interface to display movies and stream content.
 
 📂 Project Structure
 StreamTree/
@@ -26,24 +40,16 @@ StreamTree/
 └── README.md
 
 
-Config Repo (separate): https://github.com/dheeshi/microservices-config
-
-Stores *.properties for all microservices.
-
-Loaded by Config Server at runtime.
+#Config Repo (separate): https://github.com/dheeshi/microservices-config
+#Stores *.properties for all microservices.
+#Loaded by Config Server at runtime.
 
 *🛠 Technologies Used*
-
 Java 17, Spring Boot
-
 Spring Cloud Config
-
 Eureka Service Registry
-
 API Gateway (Spring Cloud Gateway)
-
 Maven
-
 HTML / JS frontend
 
 ⚙ How to Run Locally
@@ -94,27 +100,16 @@ API Gateway endpoints response
 
 Frontend webapp showing movies
 
-🔗 Project Links
+**🔗 Project Links**
 
 GitHub Repo: https://github.com/dheeshi/StreamTree
 
 Config Repo: https://github.com/dheeshi/microservices-config
 
-📝 Notes
+**📝Key Notes**
 
-Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
+->Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
+->Frontend is static HTML for demonstration purposes.
 
-Frontend is static HTML for demonstration purposes.
 
 
-```mermaid
-graph TD
-    Frontend[Frontend: webapp.html] --> Gateway[API Gateway]
-    Gateway --> Catalog[Movie Catalog Service]
-    Gateway --> Streaming[Movie Streaming Service]
-    Catalog --> Config[Config Server]
-    Streaming --> Config
-    Config --> GitHub[GitHub: microservices-config]
-    Catalog --> Eureka[Service Registry]
-    Streaming --> Eureka
-    Gateway --> Eureka
