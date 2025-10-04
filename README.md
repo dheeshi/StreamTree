@@ -1,4 +1,4 @@
-##**StreamTree – Microservices Movie Streaming Project**
+##StreamTree – Microservices Movie Streaming Project
 
 
 ```mermaid
