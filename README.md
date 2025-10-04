@@ -20,7 +20,7 @@ graph TD
 ```
 
 
-##🚀 Project Overview
+## **🚀 Project Overview**
 
 _StreamTree is a microservices-based movie streaming demo built with Spring Boot. The project demonstrates centralized configuration, service discovery, routing via an API gateway, and a small static frontend that consumes the APIs._
 
@@ -38,7 +38,7 @@ Key components:
 
 
 
-## 📂 Project Structure
+## **📂 Project Structure**
 
 ```
 StreamTree/
@@ -61,7 +61,7 @@ Loaded by Config Server at runtime.
 
 
 
-##🛠 Technologies Used
+## **🛠 Technologies Used**
 
 Java 17, Spring Boot
 
@@ -79,10 +79,10 @@ HTML / JS (frontend)
 
 
 
-##⚙ How to Run Locally
+## **⚙ How to Run Locally**
 
 
-⚙️ Prerequisites
+***⚙️ Prerequisites***
 
 Java 17 (JDK)
 
@@ -90,7 +90,7 @@ Maven
 
 Git
 
-🔧 Recommended local tooling & utilities
+***🔧 Recommended local tooling & utilities***
 
 IDE: IntelliJ IDEA (Community or Ultimate) or VS Code — for editing & debugging.
 
@@ -100,9 +100,9 @@ MySQL Workbench — for checking database activity.
 
 
 
-Step-by-step :
+**Step-by-step :**
 
-1) clone the repository
+*1) clone the repository*
 
 git clone https://github.com/dheeshi/StreamTree.git 
 
@@ -110,7 +110,7 @@ cd StreamTree
 
 
 
-2.1) Start Config Server
+*2.1) Start Config Server*
 
 cd config-server  
 
@@ -118,7 +118,7 @@ mvn spring-boot:run
 
 
 
-2.2) Start Service Registry (Eureka)
+*2.2) Start Service Registry (Eureka)*
 
 cd service-registry
 
@@ -127,22 +127,22 @@ mvn spring-boot:run
 
 
 
-2.3) Start other microservices (catalog, streaming, gateway)
+*2.3) Start other microservices (catalog, streaming, gateway)*
 
 
-a)catalog service
+_a)catalog service_
 
 cd movie-catalog-service
 
 mvn spring-boot:run
 
-b)streaming service
+_b)streaming service_
 
 cd movie-streaming-service
 
 mvn spring-boot:run
 
-c)gateway service
+_c)gateway service_
 
 cd api-gateway
 
@@ -150,29 +150,28 @@ mvn spring-boot:run
 
 
 
-3) Open Frontend;
+*3) Open Frontend;*
    
 Open webapp.html in a browser.
 It will connect to API Gateway endpoints.
 
 
-Default local endpoints (examples):
+_Default local endpoints (examples):_
 
-Config Server: http://localhost:8888
+* Config Server: http://localhost:8888
 
-Eureka dashboard: http://localhost:8761
+* Eureka dashboard: http://localhost:8761
 
-Gateway: http://localhost:8080 (routes to service endpoints)
+* Gateway: http://localhost:8080 (routes to service endpoints)
 
 
 
-📸 Screenshots
+**📸 Screenshots**
 (Add screenshots of:)
 Eureka Dashboard showing registered services
 API Gateway endpoints response
 Frontend webapp showing movies
 
-![Eureka Dashboard](docs/screenshots/eureka.png)
 
 
 
@@ -187,16 +186,16 @@ Config Repo: https://github.com/dheeshi/microservices-config
 -> Frontend is static HTML for demonstration purposes.
 
 
-##📝Key Notes
+**📝Key Notes**
 
-The basics of microservice architecture
-Created a video streaming app using microservices
-Implementing service registry with Eureka server
-Creating and testing individual microservices
-Using API Gateway with Spring Cloud Routing
-Service-to-service communication
-Centralized configuration management with config server
-Distributed tracing system with Zipkin
+* The basics of microservice architecture
+* Created a video streaming app using microservices
+* Implementing service registry with Eureka server
+* Creating and testing individual microservices
+* Using API Gateway with Spring Cloud Routing
+* Service-to-service communication
+* Centralized configuration management with config server
+* Distributed tracing system with Zipkin
 
 
 
