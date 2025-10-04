@@ -108,3 +108,16 @@ Config Repo: https://github.com/dheeshi/microservices-config
 Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
 
 Frontend is static HTML for demonstration purposes.
+
+
+```mermaid
+graph TD
+    Frontend[Frontend: webapp.html] --> Gateway[API Gateway]
+    Gateway --> Catalog[Movie Catalog Service]
+    Gateway --> Streaming[Movie Streaming Service]
+    Catalog --> Config[Config Server]
+    Streaming --> Config
+    Config --> GitHub[GitHub: microservices-config]
+    Catalog --> Eureka[Service Registry]
+    Streaming --> Eureka
+    Gateway --> Eureka
