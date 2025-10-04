@@ -36,6 +36,7 @@ This project demonstrates:
 
 
 **📂 Project Structure**
+
 StreamTree/
 ├── api-gateway/                # API Gateway service
 ├── config-server/              # Spring Cloud Config Server
@@ -45,61 +46,89 @@ StreamTree/
 ├── webapp.html                 # Frontend web interface
 └── README.md
 
+
 #Config Repo (separate): https://github.com/dheeshi/microservices-config
+
 #Stores *.properties for all microservices.
+
 #Loaded by Config Server at runtime.
 
 
 
+
+
 **🛠 Technologies Used**
+
 Java 17, Spring Boot
+
 Spring Cloud Config
+
 Eureka Service Registry
+
 API Gateway (Spring Cloud Gateway)
+
 Maven
-HTML / JS frontend
+
+Zipkin (distributed tracing)
+
+HTML / JS (frontend)
+
+
 
 **⚙ How to Run Locally**
 
+
 step 1)_Clone the repository_
 
-*git clone https://github.com/dheeshi/StreamTree.git
-cd StreamTree*
+git clone https://github.com/dheeshi/StreamTree.git 
+
+cd StreamTree
 
 
-Step 2)_Start Config Server_
 
-*cd config-server
-mvn spring-boot:run*
+Step 2.1)_Start Config Server_
+
+*cd config-server  
+
+mvn spring-boot:run
 
 
-step 2.1)_Start Service Registry (Eureka)_
+
+step 2.2)_Start Service Registry (Eureka)_
 
 *cd service-registry
-mvn spring-boot:run*
+
+mvn spring-boot:run
 
 
-_Start other microservices (catalog, streaming, gateway)_
+
+step 2.3)_Start other microservices (catalog, streaming, gateway)_
 
 *cd movie-catalog-service
-mvn spring-boot:run*
+
+mvn spring-boot:run
 
 *cd movie-streaming-service
-mvn spring-boot:run*
+
+mvn spring-boot:run
 
 *cd api-gateway
-mvn spring-boot:run*
+
+mvn spring-boot:run
 
 
-Open Frontend;
+step 3)_Open Frontend;_    
 Open webapp.html in a browser.
 It will connect to API Gateway endpoints.
+
+
 
 📸 Screenshots
 (Add screenshots of:)
 Eureka Dashboard showing registered services
 API Gateway endpoints response
 Frontend webapp showing movies
+
 
 
 **🔗 Project Links**
@@ -111,8 +140,9 @@ Config Repo: https://github.com/dheeshi/microservices-config
 
 **📝Key Notes**
 
-->Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
-->Frontend is static HTML for demonstration purposes.
+-> Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
+
+-> Frontend is static HTML for demonstration purposes.
 
 
 
