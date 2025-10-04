@@ -2,7 +2,7 @@
 
 [![Java](https://img.shields.io/badge/Java-17-blue)](https://openjdk.org/) [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-green)](#) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](#)
 
----
+
 
 ```mermaid
 graph TD
@@ -15,122 +15,127 @@ graph TD
     Catalog --> Eureka[Service Registry]
     Streaming --> Eureka
     Gateway --> Eureka
+
+
 ```
-🚀 Project Overview
-StreamTree is a microservices-based movie streaming demo built with Spring Boot. The project demonstrates centralized configuration, service discovery, routing via an API gateway, and a small static frontend that consumes the APIs.
 
-Key components:
 
-Centralized configuration with Spring Cloud Config (external config repository)
+##**🚀 Project Overview**
 
-Service discovery with Eureka
+_StreamTree is a microservices-based movie streaming platform built with Spring Boot._
 
-API Gateway using Spring Cloud Gateway
+This project demonstrates:
 
-Movie Catalog and Movie Streaming microservices
+-> Config Server: Centralized configuration for all services using GitHub repo.
 
-A static frontend (webapp.html) that calls the gateway
+-> Service Registry (Eureka): Automatic registration and discovery of microservices.
 
-📂 Project Structure
-bash
-Copy code
+-> API Gateway: Single entry point routing requests to microservices.
+
+-> Movie Services: Catalog and streaming services.
+
+-> Frontend HTML: Basic web interface to display movies and stream content.
+
+
+
+## 📂 Project Structure
+
+```
 StreamTree/
-├── api-gateway/                # Spring Cloud Gateway service
+├── api-gateway/                # API Gateway service
 ├── config-server/              # Spring Cloud Config Server
 ├── movie-catalog-service/      # Movie catalog microservice
-├── movie-streaming-service/    # Movie streaming microservice
+├── movie-streaming-service/    # Streaming microservice
 ├── service-registry/           # Eureka Service Registry
-├── webapp.html                 # Frontend web interface (static)
+├── webapp.html                 # Frontend web interface
 └── README.md
-Config repository (external): https://github.com/dheeshi/microservices-config
-Contains *.properties or *.yml for each service; read by the Config Server at runtime.
+```
 
-🧰 Technologies
+
+Config Repo (separate): https://github.com/dheeshi/microservices-config
+
+Stores *.properties for all microservices.
+
+Loaded by Config Server at runtime.
+
+
+
+
+##**🛠 Technologies Used**
+
 Java 17, Spring Boot
 
 Spring Cloud Config
 
 Eureka Service Registry
 
-Spring Cloud Gateway
+API Gateway (Spring Cloud Gateway)
 
 Maven
 
-Zipkin (optional for distributed tracing)
+Zipkin (distributed tracing)
 
-HTML / JavaScript (frontend)
+HTML / JS (frontend)
 
-⚙️ Prerequisites
-Java 17 (JDK)
 
-Maven
 
-Git
+##**⚙ How to Run Locally**
 
-(Optional) Docker & Docker Compose
+Step-by-step :
 
-⚙️ How to Run Locally (step-by-step)
-Open separate terminal windows for each service. Start services in this order.
+1) clone the repository
 
-Clone repository
+git clone https://github.com/dheeshi/StreamTree.git 
 
-bash
-Copy code
-git clone https://github.com/dheeshi/StreamTree.git
 cd StreamTree
-Start Config Server
 
-bash
-Copy code
-cd config-server
-mvn clean package -DskipTests
+
+
+2.1) Start Config Server
+
+cd config-server  
+
 mvn spring-boot:run
-Start Service Registry (Eureka)
 
-bash
-Copy code
-cd ../service-registry
-mvn clean package -DskipTests
+
+
+2.2) Start Service Registry (Eureka)
+
+cd service-registry
+
 mvn spring-boot:run
-Start Movie Catalog Service
 
-bash
-Copy code
-cd ../movie-catalog-service
-mvn clean package -DskipTests
+
+
+
+2.3) Start other microservices (catalog, streaming, gateway)
+
+
+a)catalog service
+
+cd movie-catalog-service
+
 mvn spring-boot:run
-Start Movie Streaming Service
 
-bash
-Copy code
-cd ../movie-streaming-service
-mvn clean package -DskipTests
+b)streaming service
+
+cd movie-streaming-service
+
 mvn spring-boot:run
-Start API Gateway
 
-bash
-Copy code
-cd ../api-gateway
-mvn clean package -DskipTests
+c)gateway service
+
+cd api-gateway
+
 mvn spring-boot:run
-Open Frontend
 
-Open webapp.html in a browser (File → Open) or serve via a simple static server. The frontend will call the API Gateway endpoints.
 
-Default local endpoints (examples):
 
-Config Server: http://localhost:8888
+3) Open Frontend;
+   
+Open webapp.html in a browser.
+It will connect to API Gateway endpoints.
 
-Eureka dashboard: http://localhost:8761
-
-Gateway: http://localhost:8080 (routes to service endpoints)
-
-Verify config retrieval:
-
-bash
-Copy code
-curl http://localhost:8888/movie-catalog-service/default
-This should return JSON with properties for movie-catalog-service.
 
 
 📸 Screenshots
@@ -163,7 +168,6 @@ Using API Gateway with Spring Cloud Routing
 Service-to-service communication
 Centralized configuration management with config server
 Distributed tracing system with Zipkin
-
 
 
 
