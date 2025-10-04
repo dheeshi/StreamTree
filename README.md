@@ -63,19 +63,19 @@ Loaded by Config Server at runtime.
 
 ## **🛠 Technologies Used**
 
-Java 17, Spring Boot
+* Java 17, Spring Boot
 
-Spring Cloud Config
+* Spring Cloud Config
 
-Eureka Service Registry
+* Eureka Service Registry
 
-API Gateway (Spring Cloud Gateway)
+* API Gateway (Spring Cloud Gateway)
 
-Maven
+* Maven
 
-Zipkin (distributed tracing)
+* Zipkin (distributed tracing)
 
-HTML / JS (frontend)
+* HTML / JavaScript (frontend)
 
 
 
@@ -84,19 +84,19 @@ HTML / JS (frontend)
 
 ***⚙️ Prerequisites***
 
-Java 17 (JDK)
+* Java 17 (JDK)
 
-Maven
+* Maven
 
-Git
+* Git
 
 ***🔧 Recommended local tooling & utilities***
 
-IDE: IntelliJ IDEA (Community or Ultimate) or VS Code — for editing & debugging.
+* IDE: IntelliJ IDEA (Community or Ultimate) or VS Code — for editing & debugging.
 
-Postman or curl — for testing APIs.
+* Postman or curl — for testing APIs.
 
-MySQL Workbench — for checking database activity.
+* MySQL Workbench — for checking database activity.
 
 
 
@@ -166,11 +166,14 @@ _Default local endpoints (examples):_
 
 
 
-**📸 Screenshots**
-(Add screenshots of:)
-Eureka Dashboard showing registered services
-API Gateway endpoints response
-Frontend webapp showing movies
+## **📸 Screenshots**
+(complete screenshots of:)
+Eureka Dashboard showing registered services;
+
+API Gateway endpoints response;
+
+Frontend webapp showing movies;
+
 
 
 
@@ -186,7 +189,7 @@ Config Repo: https://github.com/dheeshi/microservices-config
 -> Frontend is static HTML for demonstration purposes.
 
 
-**📝Key Notes**
+**📝Key Notes (Project Highlights)**
 
 * The basics of microservice architecture
 * Created a video streaming app using microservices
@@ -196,7 +199,6 @@ Config Repo: https://github.com/dheeshi/microservices-config
 * Service-to-service communication
 * Centralized configuration management with config server
 * Distributed tracing system with Zipkin
-
 
 
 
