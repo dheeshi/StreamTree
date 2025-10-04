@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StreamTree</title>
+  <meta name="description" content="My Stream — fast, beautiful streaming. Browse movies, TV shows and curated recommendations." />
+  <meta name="theme-color" content="#07101a" />
+  <style>
+    /* ====== Sky-blue Landing Theme (single file) ====== */
+    :root{
+      --bg-900: #07101a;
+      --bg-800: #0b1724;
+      --text: #eaf6ff;
+      --muted: #bfcfe0;
+      --accent: #7ec8ff;
+      --accent-2: #66b3ff;
+      --glass: rgba(255,255,255,0.04);
+      --card-radius: 14px;
+      --container-max: 1180px;
+      --transition: 220ms cubic-bezier(.2,.9,.3,1);
+      --shadow: 0 18px 40px rgba(2,10,30,0.48);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--text);
+      background:var(--bg-900);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Background image with dark overlay for readability */
+    .bg-hero{
+      position:relative;
+      min-height:60vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 20px;
+      background-image:
+        linear-gradient(180deg, rgba(3,10,20,0.56), rgba(3,10,20,0.56)),
+        url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1600&q=70');
+      background-size:cover;
+      background-position:center;
+      color:var(--text);
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--container-max);
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      width:100%;
+      padding:12px 0;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .logo h1{
+      margin:0;
+      font-size:1.25rem;
+      background:linear-gradient(90deg,var(--accent-2),var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    nav a, nav button{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:0.95rem;
+      transition:all var(--transition);
+      background:transparent;
+      border:0;
+    }
+    nav a:hover, nav button:hover{ color:var(--accent-2); transform:translateY(-2px) }
+
+    /* Hero content */
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      width:100%;
+      max-width:1180px;
+    }
+
+    .hero-text{
+      color:var(--text);
+    }
+    .hero-text h2{
+      margin:0 0 12px 0;
+      font-size:2.4rem;
+      line-height:1.06;
+    }
+    .hero-text p{
+      margin:0 0 22px 0;
+      color:var(--muted);
+      font-size:1rem;
+      max-width:60ch;
+    }
+    .hero-ctas{ display:flex; gap:12px; flex-wrap:wrap }
+    .btn{
+      padding:12px 18px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:0.95rem;
+      transition:transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#022034;
+      box-shadow: 0 10px 30px rgba(46,147,255,0.14);
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-demo{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:8px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.04);
+      overflow:hidden;
+    }
+    .hero-demo video{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+      display:block;
+      border-radius:10px;
+      background:#000;
+    }
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,0.04);
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:0.85rem;
+      margin-bottom:12px;
+    }
+
+    /* features */
+    .features{
+      padding:36px 0;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .feature{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 10px 30px rgba(2,10,30,0.28);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .feature h4{ margin:0 0 8px 0 }
+    .feature p{ margin:0; color:var(--muted) }
+
+    /* popular section */
+    .popular{
+      padding:40px 0;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
+
+    /* Card styling tuned for playable videos */
+    .card{
+      border-radius:12px;
+      overflow:hidden;
+      min-height:340px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      position:relative;
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 12px 30px rgba(2,10,30,0.28);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .video-container{
+      position:relative;
+      padding-bottom:56.25%;
+      height:0;
+      overflow:hidden;
+      background:#000;
+    }
+    .video-container video{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      object-fit:cover;
+      background: transparent;
+    }
+
+    .play-btn{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#022034;
+      font-size:28px;
+      border-radius:50%;
+      width:64px;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: background 0.3s, opacity 0.3s, transform 120ms;
+      pointer-events:none;
+      box-shadow: 0 12px 28px rgba(20,60,120,0.12);
+      z-index:3;
+    }
+
+    .card:hover .play-btn{ transform: translate(-50%,-50%) scale(1.04); }
+
+    .card-title{
+      position:relative;
+      font-size:1rem;
+      font-weight:600;
+      padding:12px;
+      color:var(--text);
+      background: linear-gradient(180deg, rgba(1,7,18,0.6), rgba(1,7,18,0.52));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      z-index:2;
+    }
+
+    .card-description{
+      padding:12px;
+      color:var(--muted);
+      font-size:0.95rem;
+      line-height:1.4;
+      background: linear-gradient(180deg, rgba(1,7,18,0.5), rgba(1,7,18,0.4));
+      z-index:2;
+      flex-grow:1;
+    }
+
+    /* Search modal */
+    #searchModal {
+      position: fixed;
+      inset: 0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+      background: rgba(2,6,23,0.6);
+      padding:20px;
+    }
+    #searchModal.active { display:flex; }
+    #searchModal .inner {
+      width: min(880px, 98%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+    }
+    .search-row { display:flex; gap:10px; align-items:center; margin-bottom:12px; }
+    .search-row input[type="text"]{
+      flex:1;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.03);
+      color:var(--text);
+      font-size:1rem;
+    }
+    .search-row select{
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+    .search-row .close-btn {
+      padding:10px 12px;
+      border-radius:8px;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--text);
+      cursor:pointer;
+    }
+
+    /* CTA strip */
+    .cta-strip{
+      margin:36px 0;
+      padding:26px;
+      border-radius:12px;
+      background:linear-gradient(90deg, rgba(46,147,255,0.06), rgba(126,200,255,0.02));
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      border:1px solid rgba(46,147,255,0.06);
+    }
+
+    footer{
+      padding:20px 0;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.03);
+    }
+    .muted{ color:var(--muted) }
+
+    /* small responsive */
+    @media (max-width:980px){ .hero-inner{ grid-template-columns: 1fr; } .hero-demo video{ height:200px } }
+    @media (max-width:520px){ .hero-text h2{ font-size:1.6rem } .card{ min-height:300px } }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="bg-hero">
+    <div class="container">
+      <header>
+        <a class="logo" href="#">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect x="2" y="3" width="20" height="14" rx="2" fill="url(#g)"></rect>
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#66b3ff"/><stop offset="1" stop-color="#7ec8ff"/></linearGradient></defs>
+          </svg>
+          <h1>StreamTree</h1>
+        </a>
+
+        <nav>
+          <a href="#features">Why</a>
+          <a href="#popular">Popular</a>
+          <button id="openSearchTop" aria-haspopup="dialog">Search</button>
+        </nav>
+      </header>
+
+      <div class="hero-inner" role="region" aria-label="Main hero">
+        <div class="hero-text">
+          <span class="badge">Watch what you love  —  Fast • Responsive • Minimal</span>
+          <h2>Stream smoother. Find your next favourite movie.</h2>
+          <p>Beautiful UI, fast streaming and curated recommendations — built for speed and simplicity. Browse our catalog or try the demo below.</p>
+
+          <div class="hero-ctas">
+            <button class="btn btn-primary" id="browseBtn">Browse Catalog</button>
+            <button class="btn btn-ghost" id="openSearchHero">Search</button>
+          </div>
+        </div>
+
+        <div class="hero-demo" aria-hidden="false">
+          <!-- demo video uses your existing stream endpoint for the first available item if present -->
+          <video id="demoPlayer" autoplay muted loop playsinline controls>
+            <!-- src set via JS -->
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px;">
+        <h3 style="margin:0">Why choose StreamTree</h3>
+        <small class="muted">Start watching in seconds — mobile & desktop friendly</small>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature">
+          <h4>Fast streaming</h4>
+          <p>Low-latency playback and efficient streaming so your content starts faster.</p>
+        </div>
+        <div class="feature">
+          <h4>Curated catalog</h4>
+          <p>Easy-to-browse categories and smart recommendations to find what you love.</p>
+        </div>
+        <div class="feature">
+          <h4>Responsive UI</h4>
+          <p>Looks great on any device — accessible and readable design.</p>
+        </div>
+        <div class="feature">
+          <h4>Multiple streaming</h4>
+          <p>You can watch multiple videos at a time smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR (PLAYABLE inline using original streaming logic) -->
+  <section id="popular" class="popular">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <h3 style="margin:0">Popular right now</h3>
+        <small class="muted">Handpicked from your catalog</small>
+      </div>
+
+      <div style="height:18px"></div>
+
+      <div class="cards" id="popularCards">
+        <!-- JS will inject up to 6 playable cards here using your endpoint -->
+      </div>
+
+      <div class="cta-strip" style="margin-top:24px;">
+        <div>
+          <strong>Ready to watch?</strong>
+          <div class="muted">Search the catalog and start playback instantly.</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-primary" id="browseBtn2">Browse Catalog</button>
+          <button class="btn btn-ghost" id="openSearchStrip">Search</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Modal (uses ids searchInput + categoryFilter) -->
+  <div id="searchModal" aria-hidden="true">
+    <div class="inner" role="dialog" aria-modal="true" aria-label="Search catalog">
+      <div class="search-row">
+        <input id="searchInput" type="text" placeholder="Search videos by title..." aria-label="Search videos" />
+        <select id="categoryFilter" aria-label="Filter category">
+          <option value="all">All Categories</option>
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+          <option value="drama">Drama</option>
+          <option value="sci-fi">Sci-Fi</option>
+        </select>
+        <button class="close-btn" id="closeSearch">Close</button>
+      </div>
+      <div id="searchResults" style="max-height:50vh; overflow:auto;"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <small class="muted">© 2025 My Stream</small>
+        <a class="muted" href="#" style="text-decoration:none; margin-left:8px;">Privacy</a>
+      </div>
+      <div class="muted">Built with ❤️ • Fast demo</div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll to catalog when clicking Browse
+    document.getElementById('browseBtn').addEventListener('click', () => {
+      document.getElementById('popular').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    document.getElementById('browseBtn2').addEventListener('click', () => {
+      document.getElementById('popular').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Search modal controls
+    const openSearchTop = document.getElementById('openSearchTop');
+    const openSearchHero = document.getElementById('openSearchHero');
+    const openSearchStrip = document.getElementById('openSearchStrip');
+    const searchModal = document.getElementById('searchModal');
+    const closeSearch = document.getElementById('closeSearch');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const searchResults = document.getElementById('searchResults');
+
+    function openSearch() {
+      searchModal.classList.add('active');
+      searchModal.setAttribute('aria-hidden', 'false');
+      // small timeout to ensure visible before focus
+      setTimeout(() => searchInput.focus(), 120);
+      // populate results with current full list
+      renderSearchResults(allVideos);
+    }
+    function closeSearchModal() {
+      searchModal.classList.remove('active');
+      searchModal.setAttribute('aria-hidden', 'true');
+      searchInput.value = '';
+      categoryFilter.value = 'all';
+      searchResults.innerHTML = '';
+    }
+    openSearchTop.addEventListener('click', openSearch);
+    openSearchHero.addEventListener('click', openSearch);
+    openSearchStrip.addEventListener('click', openSearch);
+    closeSearch.addEventListener('click', closeSearchModal);
+    searchModal.addEventListener('click', (ev) => { if (ev.target === searchModal) closeSearchModal(); });
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') closeSearchModal(); });
+
+    // Global storage for videos (so search filters can reuse)
+    let allVideos = [];
+
+    // Render helper for Popular section (keeps original streaming behavior)
+    function renderPopular(videos) {
+      const popularContainer = document.getElementById('popularCards');
+      popularContainer.innerHTML = '';
+      videos.slice(0,6).forEach(video => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const title = document.createElement('div');
+        title.classList.add('card-title');
+        title.textContent = video.name || 'Untitled';
+
+        const videoContainer = document.createElement('div');
+        videoContainer.classList.add('video-container');
+
+        const videoElement = document.createElement('video');
+        videoElement.controls = true;
+
+        // Hide play button when playing
+        videoElement.addEventListener('play', () => { playBtn.style.opacity = '0'; });
+        videoElement.addEventListener('pause', () => { playBtn.style.opacity = '1'; });
+
+        videoElement.onloadedmetadata = function() {
+          try { this.currentTime = 2; } catch(e) {}
+        };
+
+        videoElement.onseeked = function() {
+          try {
+            const canvas = document.createElement('canvas');
+            canvas.width = this.videoWidth || 320;
+            canvas.height = this.videoHeight || 180;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+            const thumbnail = canvas.toDataURL('image/jpeg');
+            card.style.backgroundImage = `url(${thumbnail})`;
+            card.style.backgroundSize = 'cover';
+            card.style.backgroundPosition = 'center';
+          } catch(e) {
+            // ignore cross-origin or other issues silently
+          }
+        };
+
+        videoElement.src = `http://localhost:8080/stream/with-id/${video.id}`;
+        videoElement.poster = `http://localhost:8080/stream/with-id/${video.id}`;
+
+        const playBtn = document.createElement('div');
+        playBtn.classList.add('play-btn');
+        playBtn.innerHTML = "▶";
+
+        const description = document.createElement('div');
+        description.classList.add('card-description');
+        description.textContent = video.description || '';
+
+        videoContainer.appendChild(videoElement);
+        videoContainer.appendChild(playBtn);
+        card.appendChild(title);
+        card.appendChild(videoContainer);
+        card.appendChild(description);
+        popularContainer.appendChild(card);
+      });
+    }
+
+    // Render helper used in search modal results
+    function renderSearchResults(videos) {
+      searchResults.innerHTML = '';
+      if (!videos || videos.length === 0) {
+        searchResults.innerHTML = '<div style="color:var(--muted)">No results</div>';
+        return;
+      }
+      videos.forEach(video => {
+        const item = document.createElement('div');
+        item.style.display = 'flex';
+        item.style.gap = '12px';
+        item.style.padding = '10px 6px';
+        item.style.borderBottom = '1px solid rgba(255,255,255,0.02)';
+        item.style.alignItems = 'center';
+        item.style.cursor = 'pointer';
+
+        const thumb = document.createElement('div');
+        thumb.style.width = '120px';
+        thumb.style.height = '68px';
+        thumb.style.background = 'linear-gradient(90deg,#022432,#073b50)';
+        thumb.style.borderRadius = '8px';
+        thumb.style.flex = '0 0 120px';
+        thumb.style.backgroundSize = 'cover';
+        thumb.style.backgroundPosition = 'center';
+        thumb.style.backgroundImage = `url(http://localhost:8080/stream/with-id/${video.id})`;
+
+        const meta = document.createElement('div');
+        meta.style.flex = '1';
+        const t = document.createElement('div'); t.style.fontWeight = '600'; t.textContent = video.name || 'Untitled';
+        const s = document.createElement('div'); s.style.color = 'var(--muted)'; s.style.fontSize = '0.95rem'; s.textContent = (video.description||'').slice(0,140);
+        meta.appendChild(t); meta.appendChild(s);
+
+        item.appendChild(thumb);
+        item.appendChild(meta);
+
+        // Clicking a search result scrolls to Popular and highlights (and closes modal)
+        item.addEventListener('click', () => {
+          closeSearchModal();
+          // filter popular to show that item first
+          const filtered = allVideos.filter(v => v.id === video.id);
+          renderPopular(filtered.concat(allVideos.filter(v => v.id !== video.id)));
+          // scroll to popular
+          document.getElementById('popular').scrollIntoView({behavior:'smooth', block:'start'});
+        });
+
+        searchResults.appendChild(item);
+      });
+    }
+
+    // Live filtering while typing/selecting
+    searchInput.addEventListener('input', function() {
+      const q = this.value.trim().toLowerCase();
+      const cat = (categoryFilter.value || 'all').toLowerCase();
+      const filtered = allVideos.filter(v => {
+        const matchesName = (v.name || '').toLowerCase().includes(q);
+        const matchesCat = (cat === 'all') || ((v.category||'').toLowerCase() === cat);
+        return matchesName && matchesCat;
+      });
+      renderSearchResults(filtered);
+    });
+    categoryFilter.addEventListener('change', () => searchInput.dispatchEvent(new Event('input')));
+
+    // Populate demo player and popular cards using original streaming logic
+    (function(){
+      const demoPlayer = document.getElementById('demoPlayer');
+
+      fetch('http://localhost:8080/movie-info/list')
+        .then(r => r.json())
+        .then(list => {
+          if (!Array.isArray(list) || list.length === 0) return;
+          // store globally for search
+          allVideos = list;
+
+          // Attempt to use the first item as a demo video
+          const first = list[0];
+          if (first && first.id) {
+            demoPlayer.muted = true; // ensure muted for autoplay
+            demoPlayer.src = `http://localhost:8080/stream/with-id/${first.id}`;
+            demoPlayer.poster = `http://localhost:8080/stream/with-id/${first.id}`;
+            // try to play immediately
+            const p = demoPlayer.play();
+            if (p && p.catch) {
+              p.catch(() => {
+                // browsers sometimes block autoplay despite muted; no further action required
+              });
+            }
+          }
+
+          // Render popular tiles (first 6)
+          renderPopular(allVideos);
+        })
+        .catch(err => {
+          console.error('Could not fetch popular list:', err);
+        });
+    })();
+  </script>
+</body>
+</html>
