@@ -1,4 +1,4 @@
-**StreamTree – Microservices Movie Streaming Project**
+##**StreamTree – Microservices Movie Streaming Project**
 
 
 ```mermaid
@@ -17,7 +17,7 @@ graph TD
 ```
 
 
-**🚀 Project Overview**
+##**🚀 Project Overview**
 
 _StreamTree is a microservices-based movie streaming platform built with Spring Boot._
 
@@ -58,7 +58,7 @@ Loaded by Config Server at runtime.
 
 
 
-**🛠 Technologies Used**
+##**🛠 Technologies Used**
 
 Java 17, Spring Boot
 
@@ -76,10 +76,11 @@ HTML / JS (frontend)
 
 
 
-**⚙ How to Run Locally**
+##**⚙ How to Run Locally**
 
+Step-by-step :
 
-step 1)_Clone the repository_
+1) clone the repository
 
 git clone https://github.com/dheeshi/StreamTree.git 
 
@@ -87,38 +88,48 @@ cd StreamTree
 
 
 
-Step 2.1)_Start Config Server_
+2.1) Start Config Server
 
-*cd config-server  
-
-mvn spring-boot:run
-
-
-
-step 2.2)_Start Service Registry (Eureka)_
-
-*cd service-registry
+cd config-server  
 
 mvn spring-boot:run
 
 
 
-step 2.3)_Start other microservices (catalog, streaming, gateway)_
+2.2) Start Service Registry (Eureka)
 
-*cd movie-catalog-service
-
-mvn spring-boot:run
-
-*cd movie-streaming-service
-
-mvn spring-boot:run
-
-*cd api-gateway
+cd service-registry
 
 mvn spring-boot:run
 
 
-step 3)_Open Frontend;_    
+
+
+2.3) Start other microservices (catalog, streaming, gateway)
+
+
+a)catalog service
+
+cd movie-catalog-service
+
+mvn spring-boot:run
+
+b)streaming service
+
+cd movie-streaming-service
+
+mvn spring-boot:run
+
+c)gateway service
+
+cd api-gateway
+
+mvn spring-boot:run
+
+
+
+3) Open Frontend;
+   
 Open webapp.html in a browser.
 It will connect to API Gateway endpoints.
 
@@ -138,12 +149,24 @@ GitHub Repo: https://github.com/dheeshi/StreamTree
 
 Config Repo: https://github.com/dheeshi/microservices-config
 
-
-**📝Key Notes**
-
 -> Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
 
 -> Frontend is static HTML for demonstration purposes.
+
+
+##**📝Key Notes**
+
+
+The basics of microservice architecture
+Create a video streaming app using microservices
+Implementing service registry with Eureka server
+Creating and testing individual microservices
+Using API Gateway with Spring Cloud Routing
+Service-to-service communication
+Centralized configuration management with config server
+Distributed tracing system with Zipkin
+
+
 
 
 
