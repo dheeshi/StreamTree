@@ -35,7 +35,9 @@ This project demonstrates:
 
 
 
-📂 Project Structure
+## 📂 Project Structure
+
+```
 StreamTree/
 ├── api-gateway/                # API Gateway service
 ├── config-server/              # Spring Cloud Config Server
@@ -44,6 +46,7 @@ StreamTree/
 ├── service-registry/           # Eureka Service Registry
 ├── webapp.html                 # Frontend web interface
 └── README.md
+```
 
 
 Config Repo (separate): https://github.com/dheeshi/microservices-config
