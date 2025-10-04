@@ -1,7 +1,4 @@
-StreamTree – Microservices Movie Streaming Project
-
-
-(You can add a diagram image showing: API Gateway → Services → Config Server → Eureka)
+*StreamTree – Microservices Movie Streaming Project*
 
 🚀 Project Overview
 
@@ -35,7 +32,7 @@ Stores *.properties for all microservices.
 
 Loaded by Config Server at runtime.
 
-🛠 Technologies Used
+*🛠 Technologies Used*
 
 Java 17, Spring Boot
 
