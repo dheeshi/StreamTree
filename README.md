@@ -1,6 +1,6 @@
-# **S**treamTree — Microservices Movie Streaming Project
+# **S**treamTree — Microservices Video Streaming Project
 
-[![Java](https://img.shields.io/badge/Java-17-blue)](https://openjdk.org/) [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-green)](#) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](#)
+[![Java](https://img.shields.io/badge/Java-17-blue)](https://openjdk.org/) [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)](#) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](#)
 
 
 
@@ -20,11 +20,11 @@ graph TD
 ```
 
 
-##**🚀 Project Overview**
+##🚀 Project Overview
 
-_StreamTree is a microservices-based movie streaming platform built with Spring Boot._
+_StreamTree is a microservices-based movie streaming demo built with Spring Boot. The project demonstrates centralized configuration, service discovery, routing via an API gateway, and a small static frontend that consumes the APIs._
 
-This project demonstrates:
+Key components:
 
 -> Config Server: Centralized configuration for all services using GitHub repo.
 
@@ -61,7 +61,7 @@ Loaded by Config Server at runtime.
 
 
 
-##**🛠 Technologies Used**
+##🛠 Technologies Used
 
 Java 17, Spring Boot
 
@@ -79,7 +79,26 @@ HTML / JS (frontend)
 
 
 
-##**⚙ How to Run Locally**
+##⚙ How to Run Locally
+
+
+⚙️ Prerequisites
+
+Java 17 (JDK)
+
+Maven
+
+Git
+
+🔧 Recommended local tooling & utilities
+
+IDE: IntelliJ IDEA (Community or Ultimate) or VS Code — for editing & debugging.
+
+Postman or curl — for testing APIs.
+
+MySQL Workbench — for checking database activity.
+
+
 
 Step-by-step :
 
@@ -137,12 +156,23 @@ Open webapp.html in a browser.
 It will connect to API Gateway endpoints.
 
 
+Default local endpoints (examples):
+
+Config Server: http://localhost:8888
+
+Eureka dashboard: http://localhost:8761
+
+Gateway: http://localhost:8080 (routes to service endpoints)
+
+
 
 📸 Screenshots
 (Add screenshots of:)
 Eureka Dashboard showing registered services
 API Gateway endpoints response
 Frontend webapp showing movies
+
+![Eureka Dashboard](docs/screenshots/eureka.png)
 
 
 
@@ -157,11 +187,10 @@ Config Repo: https://github.com/dheeshi/microservices-config
 -> Frontend is static HTML for demonstration purposes.
 
 
-##**📝Key Notes**
-
+##📝Key Notes
 
 The basics of microservice architecture
-Create a video streaming app using microservices
+Created a video streaming app using microservices
 Implementing service registry with Eureka server
 Creating and testing individual microservices
 Using API Gateway with Spring Cloud Routing
