@@ -35,8 +35,7 @@ This project demonstrates:
 
 
 
-**📂 Project Structure**
-
+📂 Project Structure
 StreamTree/
 ├── api-gateway/                # API Gateway service
 ├── config-server/              # Spring Cloud Config Server
@@ -47,12 +46,11 @@ StreamTree/
 └── README.md
 
 
-#Config Repo (separate): https://github.com/dheeshi/microservices-config
+Config Repo (separate): https://github.com/dheeshi/microservices-config
 
-#Stores *.properties for all microservices.
+Stores *.properties for all microservices.
 
-#Loaded by Config Server at runtime.
-
+Loaded by Config Server at runtime.
 
 
 
