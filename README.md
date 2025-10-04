@@ -17,19 +17,25 @@ graph TD
 ```
 
 
-🚀 Project Overview
+**🚀 Project Overview**
 
-StreamTree is a microservices-based movie streaming platform built with Spring Boot.
+_StreamTree is a microservices-based movie streaming platform built with Spring Boot._
 
 This project demonstrates:
+
 -> Config Server: Centralized configuration for all services using GitHub repo.
+
 -> Service Registry (Eureka): Automatic registration and discovery of microservices.
+
 -> API Gateway: Single entry point routing requests to microservices.
+
 -> Movie Services: Catalog and streaming services.
+
 -> Frontend HTML: Basic web interface to display movies and stream content.
 
 
-📂 Project Structure
+
+**📂 Project Structure**
 StreamTree/
 ├── api-gateway/                # API Gateway service
 ├── config-server/              # Spring Cloud Config Server
@@ -39,12 +45,13 @@ StreamTree/
 ├── webapp.html                 # Frontend web interface
 └── README.md
 
-
 #Config Repo (separate): https://github.com/dheeshi/microservices-config
 #Stores *.properties for all microservices.
 #Loaded by Config Server at runtime.
 
-*🛠 Technologies Used*
+
+
+**🛠 Technologies Used**
 Java 17, Spring Boot
 Spring Cloud Config
 Eureka Service Registry
@@ -52,59 +59,55 @@ API Gateway (Spring Cloud Gateway)
 Maven
 HTML / JS frontend
 
-⚙ How to Run Locally
+**⚙ How to Run Locally**
 
-Clone the repository
+step 1)_Clone the repository_
 
-git clone https://github.com/dheeshi/StreamTree.git
-cd StreamTree
-
-
-Start Config Server
-
-cd config-server
-mvn spring-boot:run
+*git clone https://github.com/dheeshi/StreamTree.git
+cd StreamTree*
 
 
-Start Service Registry (Eureka)
+Step 2)_Start Config Server_
 
-cd service-registry
-mvn spring-boot:run
-
-
-Start other microservices (catalog, streaming, gateway)
-
-cd movie-catalog-service
-mvn spring-boot:run
-
-cd movie-streaming-service
-mvn spring-boot:run
-
-cd api-gateway
-mvn spring-boot:run
+*cd config-server
+mvn spring-boot:run*
 
 
-Open Frontend
+step 2.1)_Start Service Registry (Eureka)_
 
+*cd service-registry
+mvn spring-boot:run*
+
+
+_Start other microservices (catalog, streaming, gateway)_
+
+*cd movie-catalog-service
+mvn spring-boot:run*
+
+*cd movie-streaming-service
+mvn spring-boot:run*
+
+*cd api-gateway
+mvn spring-boot:run*
+
+
+Open Frontend;
 Open webapp.html in a browser.
-
 It will connect to API Gateway endpoints.
 
 📸 Screenshots
-
 (Add screenshots of:)
-
 Eureka Dashboard showing registered services
-
 API Gateway endpoints response
-
 Frontend webapp showing movies
+
 
 **🔗 Project Links**
 
 GitHub Repo: https://github.com/dheeshi/StreamTree
 
 Config Repo: https://github.com/dheeshi/microservices-config
+
 
 **📝Key Notes**
 
