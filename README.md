@@ -168,11 +168,14 @@ _Default local endpoints (examples):_
 
 ## **📸 Screenshots**
 (complete screenshots of:)
+
 Eureka Dashboard showing registered services;
 
 API Gateway endpoints response;
 
 Frontend webapp showing movies;
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8e7b2cc3-742c-48c8-95fd-8e98a50e1f70" />
+
 
 
 
@@ -184,9 +187,9 @@ GitHub Repo: https://github.com/dheeshi/StreamTree
 
 Config Repo: https://github.com/dheeshi/microservices-config
 
--> Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
+* Config Server loads service properties from a separate GitHub repo, keeping sensitive info out of the main project.
 
--> Frontend is static HTML for demonstration purposes.
+* Frontend is static HTML for demonstration purposes.
 
 
 **📝Key Notes (Project Highlights)**
