@@ -169,12 +169,33 @@ _Default local endpoints (examples):_
 ## **📸 Screenshots**
 (complete screenshots of:)
 
-Eureka Dashboard showing registered services;
+Eureka Dashboard showing registered services; <img width="1280" height="669" alt="image" src="https://github.com/user-attachments/assets/c19f2547-ca39-464f-86bb-42063c158c4c" />
+
 
 API Gateway endpoints response;
+localhost movie list : <img width="1280" height="687" alt="image" src="https://github.com/user-attachments/assets/e96787ef-1117-4303-8c55-64d6ca45faee" />
 
-Frontend webapp showing movies;
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8e7b2cc3-742c-48c8-95fd-8e98a50e1f70" />
+postman(get&post):
+<img width="1280" height="679" alt="image" src="https://github.com/user-attachments/assets/c0ea6c46-c27c-4d4e-ab22-3c9b87bcb255" />
+<img width="1280" height="675" alt="image" src="https://github.com/user-attachments/assets/9d84a566-4aa0-4ca5-9116-d03a6d07af52" />
+
+zipkin tracing : <img width="1280" height="625" alt="image" src="https://github.com/user-attachments/assets/e957104d-190a-4bc7-b7e8-cc408580cc2a" />
+
+
+Frontend webapp showing movies, single html web page;
+
+landing page
+<img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/d0f85e47-7b4b-4202-9b0b-deb3f6b0400e" />
+
+movies list and playing videos
+<img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/ea6c9f47-201a-455a-b320-e3d469c7c84c" />
+<img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/f2b91434-f58d-4e7c-a973-cb737a641c3b" />
+
+search option
+<img width="1280" height="667" alt="image" src="https://github.com/user-attachments/assets/afd3f78e-29db-47e7-8bd9-2f265669e92a" />
+
+
+
 
 
 
