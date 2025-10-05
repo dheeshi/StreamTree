@@ -190,7 +190,7 @@ landing page
 
 movies list and playing videos
 <img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/ea6c9f47-201a-455a-b320-e3d469c7c84c" />
-<img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/f2b91434-f58d-4e7c-a973-cb737a641c3b" />
+<img width="1280" height="686" alt="image" src="https://github.com/user-attachments/assets/40a20c45-303c-418a-b196-deb28e388dbb" />
 
 search option
 <img width="1280" height="667" alt="image" src="https://github.com/user-attachments/assets/afd3f78e-29db-47e7-8bd9-2f265669e92a" />
