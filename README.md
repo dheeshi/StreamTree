@@ -167,12 +167,13 @@ _Default local endpoints (examples):_
 
 
 ## **📸 Screenshots**
-(complete screenshots of:)
+(complete screenshots of project:)
 
 Eureka Dashboard showing registered services; <img width="1280" height="669" alt="image" src="https://github.com/user-attachments/assets/c19f2547-ca39-464f-86bb-42063c158c4c" />
 
 
 API Gateway endpoints response;
+
 localhost movie list : <img width="1280" height="687" alt="image" src="https://github.com/user-attachments/assets/e96787ef-1117-4303-8c55-64d6ca45faee" />
 
 postman(get&post):
@@ -193,7 +194,6 @@ movies list and playing videos
 
 search option
 <img width="1280" height="667" alt="image" src="https://github.com/user-attachments/assets/afd3f78e-29db-47e7-8bd9-2f265669e92a" />
-
 
 
 
