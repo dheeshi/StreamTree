@@ -71,7 +71,7 @@ Loaded by Config Server at runtime.
 
 * API Gateway (Spring Cloud Gateway)
 
-* Maven
+* Gradle (Groovy DSL) – for building and managing dependencies of all microservices
 
 * Zipkin (distributed tracing)
 
@@ -86,7 +86,7 @@ Loaded by Config Server at runtime.
 
 * Java 17 (JDK)
 
-* Maven
+* Gradle
 
 * Git
 
@@ -110,44 +110,15 @@ cd StreamTree
 
 
 
-*2.1) Start Config Server*
+*2)This project uses Gradle as the build automation tool with Groovy DSL. Gradle handles dependencies, builds, and tasks for all microservices in this repository*
 
-cd config-server  
+# On Linux / Mac
+./gradlew build
+./gradlew bootRun
 
-mvn spring-boot:run
-
-
-
-*2.2) Start Service Registry (Eureka)*
-
-cd service-registry
-
-mvn spring-boot:run
-
-
-
-
-*2.3) Start other microservices (catalog, streaming, gateway)*
-
-
-_a)catalog service_
-
-cd movie-catalog-service
-
-mvn spring-boot:run
-
-_b)streaming service_
-
-cd movie-streaming-service
-
-mvn spring-boot:run
-
-_c)gateway service_
-
-cd api-gateway
-
-mvn spring-boot:run
-
+# On Windows
+gradlew.bat build
+gradlew.bat bootRun
 
 
 *3) Open Frontend;*
